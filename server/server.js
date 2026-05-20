@@ -8,7 +8,7 @@ const path = require("path");                                                   
 // Define o EJS como engine do front;
 app.set("view engine", "ejs");                                                      // Configura o EJS como a engine de visualização para renderizar arquivos .ejs
 app.set("views", path.join(__dirname, "../client/views"));                          // Define o diretório onde os arquivos de visualização estão localizados
-app.set(express.static(path.join(__dirname, "../client/public")));                  // Configura o diretório para servir arquivos estáticos (CSS, JS, imagens, etc.) a partir do caminho especificado 
+app.use(express.static(path.join(__dirname, "../client/public")));                  // Configura o diretório para servir arquivos estáticos (CSS, JS, imagens, etc.) a partir do caminho especificado 
 
 // Criação de rotas padrão;
 app.get("/", (req, res) => {                                                        // Define uma rota GET para a raiz "/"

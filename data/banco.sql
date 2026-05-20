@@ -1,6 +1,6 @@
 
-CREATE DATABASE IF NOT EXISTS db_servicos;
-USE db_servicos;
+CREATE DATABASE IF NOT EXISTS servmatch;
+USE servmatch;
 
 
 -- Tabela: Usuario

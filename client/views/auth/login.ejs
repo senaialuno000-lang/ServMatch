@@ -1,27 +1,40 @@
-<%-include("../partials/header")%>
-    <main class="main">
-        <section class="container">
-            
-        </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <main class='mainLogin'>
+      <section class='esquerda'>
+        <div class='textoServ'>
+          <h1>ServMatch</h1>
+          <p>Encontre o seu match profissional</p>
+        </div>
+      </section>
+
+      <section class='direita'>
+        <div class='areaLogin'>
+          <div class='email'>
+            <label htmlFor="EmailLogin">Email</label>
+            <input type="text" name='EmailLogin' />
+          </div>
+
+          <div class='senha'>
+            <label htmlFor="SenhaLogin">Senha</label>
+            <input type="text" name='SenhaLogin' />
+          </div>
+
+          <button>Login</button>
+          <div class='Links'>
+            <a href="#">Criar Conta</a>
+            <a href="#" class='esqueceu'>Esqueceu a Senha?</a>
+          </div>
+        </div>
+      </section>
     </main>
-<%-include("../partials/footer")%> 
-
-
-<!-- <div class="card-logo"></div>
-            <div class="card">
-                <form action="/usuarios/login" method="post">
-                    <div>
-                        <label for="email_login">Email</label>
-                        <input type="email" id="email_login" name="email">
-                    </div>
-
-                    <div>
-                        <label for="senha_login">Senha</label>
-                        <input type="password" id="senha_login" name="senha">
-                    </div>
-
-                    <button type="submit">Entrar</button>
-                    <a href="/cadastro">Cadastro</a>
-                </form>
-            </div>
-        </div> -->
+</body>
+</html>

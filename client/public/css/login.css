@@ -1,1 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bakbak+One&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+  margin: 0px;
+  padding: 0px;
+  font-family: "Poppins", sans-serif;
+}
+
+.mainLogin{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+}
+
+.esquerda{
+  width: 50%;
+  background-color: #3586FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+
+}
+
+.textoServ{
+  text-align: center;
+}
+
+.textoServ h1{
+  font-size: 120px;
+  font-family: "Bakbak One", sans-serif;
+  font-weight: normal;
+}
+
+.textoServ p{
+  font-size: 30px;
+  margin-top: -20px;
+}
+
+.direita{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+.senha{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.areaLogin{
+  width: 80%;
+}
+
+.areaLogin input{
+  width: 99.6%;
+  height: 80px;
+  border-radius: 10px;
+  border: 1px solid #686868;
+}
+
+.areaLogin button{
+  width: 100%;
+  color: white;
+  background-color: #3586FF;
+  border: none;
+  height: 80px;
+  border-radius: 10px;
+  font-size: 40px;
+}
+
+#labelSenha{
+  margin-bottom: 30px;
+}
+
+.Links{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Links a{
+  font-size: 30px;
+  color: gray;
+  text-decoration: none;
+}
+
+.areaLogin label{
+  font-size: 40px;
+}

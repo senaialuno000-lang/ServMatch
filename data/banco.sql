@@ -9,6 +9,7 @@ CREATE TABLE Usuario (
     idusuario   INT          NOT NULL AUTO_INCREMENT,
     email       VARCHAR(50)  NOT NULL,
     senha       VARCHAR(24)  NOT NULL,
+    perfil      ENUM('Contratante','Contratado'),
     PRIMARY KEY (idusuario),
     UNIQUE KEY uq_usuario_email (email)
 );

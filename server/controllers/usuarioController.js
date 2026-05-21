@@ -36,9 +36,8 @@ module.exports = {
             res.cookie('token', token, { httpOnly: true })
 
             // Redirecionamento de acordo com o perfil
-            if(usuario.perfil === "administrador") return res.redirect("/usuarios")
-            if(usuario.perfil === "ofertante") return res.redirect("/produtos/meus-produtos")
-            if(usuario.perfil === "interessado") return res.redirect("/produtos/vitrine")
+            if(usuario.perfil === "Contratante") return res.redirect("/produtos/meus-produtos")
+            if(usuario.perfil === "Contratado") return res.redirect("/produtos/vitrine")
         }
         catch(erro){
             res.status(500).render('erro', { mensagem: "Erro interno no servidor"})

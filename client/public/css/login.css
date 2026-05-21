@@ -6,6 +6,7 @@
   margin: 0px;
   padding: 0px;
   font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
 }
 
 .mainLogin{
@@ -16,11 +17,11 @@
 
 .esquerda{
   width: 50%;
-  background-color: #3586FF;
+  background-color: var(--cor-servmatch);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: var(--cor-fundo);
 
 }
 
@@ -57,21 +58,23 @@
 
 .areaLogin input{
   width: 100%;
-  height: 80px;
+  height: var(--tamanho-height);
   border-radius: 10px;
-  border: 1px solid #686868;
-  font-size: 28px;
+  border: 1px solid var(--cor-cinza);
+  font-size: var(--font-pequena-tamanho);
   padding: 0px 15px;
 }
 
 .areaLogin button{
-  width: 105%;
-  color: white;
-  background-color: #3586FF;
+  width: 100%;
+  color: var(--cor-fundo);
+  background-color: var(--cor-servmatch);
   border: none;
-  height: 80px;
+  height: var(--tamanho-height);
   border-radius: 10px;
-  font-size: 40px;
+  font-size: var(--font-grande-tamanho);
+  cursor: pointer;
+  margin-top: 20px;
 }
 
 #labelSenha{
@@ -82,15 +85,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 105%;
+  width: 100%;
 }
 
 .Links a{
-  font-size: 30px;
-  color: gray;
+  font-size: var(--font-pequena-tamanho);
+  color: var(--cor-cinza);
   text-decoration: none;
 }
 
 .areaLogin label{
-  font-size: 40px;
+  font-size: var(--font-grande-tamanho);
 }

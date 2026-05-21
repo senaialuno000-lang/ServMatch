@@ -6,3 +6,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+:root{
+    --font-pequena-tamanho: 22px;
+    --font-grande-tamanho: 30px;
+    --cor-servmatch: #3586FF;
+    --cor-fundo: white;
+    --cor-cinza: #686868;
+    --tamanho-height: 60px;
+}

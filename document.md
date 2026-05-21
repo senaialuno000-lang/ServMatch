@@ -1,1 +1,0 @@
-TamanhoTexto = 40;

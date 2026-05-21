@@ -14,14 +14,13 @@ module.exports = {
         try{
             // Pega as infomações das caixinhas da view, de acordo com o name delas
             const { email, senha } = req.body
-            
             // Executa a função de busca no model
-            const usuario = await usuarioModel.buscarPorEmail(email)
+            const usuario = await usuarioModel.buscarPorEmail(email)           
             // Se não existir, mensagem de erro
             if (!usuario) return res.status(404).render('erro', { mensagem: "Credenciais inválidas"})
 
             // compara a senha que o usuário digitou, com a senha do usuario retornado no banco
-            const senhaValida = await bcrypt.compare(senha, usuario.senha)
+            const senhaValida = await bcrypt.compare(senha, usuario.senha);
             // Se senhas não coincidirem, mensagem de erro
             if (!senhaValida) return res.status(404).render('erro', { mensagem: "Credenciais inválidas"})
 
@@ -36,12 +35,13 @@ module.exports = {
             res.cookie('token', token, { httpOnly: true })
 
             // Redirecionamento de acordo com o perfil
-            if(usuario.perfil === "administrador") return res.redirect("/usuarios")
-            if(usuario.perfil === "ofertante") return res.redirect("/produtos/meus-produtos")
-            if(usuario.perfil === "interessado") return res.redirect("/produtos/vitrine")
+            // if(usuario.perfil === "administrador") return res.redirect("/usuarios")
+            // if(usuario.perfil === "ofertante") return res.redirect("/produtos/meus-produtos")
+            // if(usuario.perfil === "interessado") return res.redirect("/produtos/vitrine")
+            return res.redirect("/main")
         }
         catch(erro){
-            res.status(500).render('erro', { mensagem: "Erro interno no servidor"})
+            res.status(500).render('erro', { mensagem: `Erro interno no servidor ${erro}`})
         }
     },
 

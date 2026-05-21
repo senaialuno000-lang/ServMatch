@@ -25,5 +25,9 @@ router.get("/cadastro", (req, res) => {
   res.json({ mensagem: "Estou na página de cadastro" });
 });
 
+router.get("/main", (req, res) => {
+  res.json({ mensagem: "Estou na página main" });
+});
+
 
 module.exports = router

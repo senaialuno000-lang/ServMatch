@@ -17,15 +17,16 @@
       </section>
 
       <section class='direita'>
-        <div class='areaLogin'>
+        <form class='areaLogin' action="/usuarios/login" method="POST">
+
           <div class='email'>
-            <label htmlFor="EmailLogin">Email</label>
-            <input type="text" name='EmailLogin' required/>
+            <label htmlFor="email">Email</label>
+            <input type="text" id='email' name="email" required/>
           </div>
 
           <div class='senha'>
-            <label htmlFor="SenhaLogin">Senha</label>
-            <input type="password" name='SenhaLogin' required/>
+            <label htmlFor="login">Senha</label>
+            <input type="password" name='senha' id='login' required/>
           </div>
 
           <button>Login</button>
@@ -33,7 +34,7 @@
             <a href="/cadastro">Criar Conta</a>
             <a href="#" class='esqueceu'>Esqueceu a Senha?</a>
           </div>
-        </div>
+        </form>
       </section>
     </main>
 </body>

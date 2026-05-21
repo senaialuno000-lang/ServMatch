@@ -1,8 +1,20 @@
 // Importação do módulo express;
 const express = require("express");                                                 // Importa o módulo express para criar o servidor
-const app = express();                                                              // Cria uma instância da aplicação express
-const port = 3000;                                                                  // Define a porta onde o servidor irá escutar
-const path = require("path");                                                       // Importa o módulo path para lidar com caminhos de arquivos e diretórios
+const app = express();                                                               // Define a porta onde o servidor irá escutar
+const path = require("path");
+
+require('dotenv').config()
+
+const port = process.env.PORT || 5000;
+// Importa o módulo path para lidar com caminhos de arquivos e diretórios
+
+// MIDDLEWARE PARA ENTENDER O JSON
+// Lê os dados em JSON
+app.use(express.json()) 
+// Servidor está apto a ler os dados dos formulário
+app.use(express.urlencoded({ extended: true })) 
+// Permite ler cookies e alterar também
+app.use(require('cookie-parser')())
 
 // Configuração do EJS e pastas do Front-end;
 // Define o EJS como engine do front;
@@ -23,6 +35,9 @@ app.get("/cadastro", (req, res) => {                                            
     res.render("auth/cadastro");                                                    // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
 }); 
 
+app.get("/main", (req, res) => {                                                // Define uma rota GET para "/cadastro" (a função de callback está vazia, o que significa que não há resposta definida para essa rota)
+    res.render("auth/main");                                                    // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
+}); 
 
 // Importar as rotas de usuário;
 const usuariosRoutes = require("./routes/usuarioRoutes.js");                        // Importa as rotas de usuário do arquivo usuarioRoutes.js

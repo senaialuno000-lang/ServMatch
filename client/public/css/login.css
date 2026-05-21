@@ -36,7 +36,7 @@
 
 .textoServ p{
   font-size: 30px;
-  margin-top: -20px;
+  margin-top: -50px;
 }
 
 .direita{
@@ -52,18 +52,20 @@
 }
 
 .areaLogin{
-  width: 80%;
+  width: 70%;
 }
 
 .areaLogin input{
-  width: 99.6%;
+  width: 100%;
   height: 80px;
   border-radius: 10px;
   border: 1px solid #686868;
+  font-size: 28px;
+  padding: 0px 15px;
 }
 
 .areaLogin button{
-  width: 100%;
+  width: 105%;
   color: white;
   background-color: #3586FF;
   border: none;
@@ -80,6 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 105%;
 }
 
 .Links a{

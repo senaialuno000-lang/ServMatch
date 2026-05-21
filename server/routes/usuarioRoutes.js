@@ -1,14 +1,29 @@
-const express = require("express"); // Importação do módulo express;
-const router = express.Router(); // Cria um roteador para definir as rotas relacionadas aos usuários
+// importação do módulo express
+const express = require("express");
+const router = express.Router();
 
-// Obtém a lista de usuários e define as rotas para usuários;
+// Importar o controller do usuario
+const usuarioController = require("../controllers/usuarioController.js")
+
+// Declaração das rotas do usuário
+// ROTAS PÚBLICAS
+// Envia os dados de login
+router.post("/login", usuarioController.login)
+
+// Rota de saida
+router.get("/logout", usuarioController.logout)
+
+// ROTAS PRIVADAS
+
+// Obtém a lista de usuários
 router.get("/", (req, res) => {
-    res.json({"mensagem": "Peguei a lista de usuários"}); // Responde com um objeto JSON contendo uma mensagem;
+  res.json({ mensagem: "Peguei a lista de usuários" });
 });
 
-// Retorna a página de cadastro de usuários;
+//Retornar a página de cadastro
 router.get("/cadastro", (req, res) => {
-    res.json({"mensagem": "Página de cadastro de usuários"});
+  res.json({ mensagem: "Estou na página de cadastro" });
 });
 
-module.exports = router; // Exporta o roteador para ser utilizado em outros arquivos, como o server.js
+
+module.exports = router

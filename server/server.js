@@ -28,9 +28,24 @@ app.get("/cadastro", (req, res) => {                                            
 const usuariosRoutes = require("./routes/usuarioRoutes.js");                        // Importa as rotas de usuário do arquivo usuarioRoutes.js
 app.use("/usuarios", usuariosRoutes);                                               // Usa as rotas de usuário para qualquer caminho que comece com "/usuarios"   
 
-app.listen(port, () => {                                                            // Inicia o servidor na porta especificada
-    console.log(`Servidor ativo na porta: ${port}`);                                // Exibe no console que o servidor está ativo na porta
-    console.log(`Link: http://localhost:${port}`);                                  // Exibe no console o link para acessar o servidor
-});
+const pool = require("./config/db.js");
+//Cria uma conexão teste com o banco
+(async () => {
+  try {
+    // Se o banco de dados estiver ativo, ai sim o servidor será iniciado
+    await pool.getConnection();
+    console.log("Banco conectado");
+    // Se o banco de dados estiver ativo, ai sim o servidor será iniciado
+    app.listen(port, () => {
+      console.log(`Link: http://localhost:${port}`);
+      console.log(`Servidor funcionando na porta ${port}`);
+    });
+  } catch (erro) {
+    // Se deu erro, avisa e encerra a tentativa
+    console.log("Erro ao tentar conectar com o banco de dados");
+    process.exit(1);
+  }
+})();
+
 
 

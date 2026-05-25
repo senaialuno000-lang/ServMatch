@@ -58,6 +58,7 @@
     width: 100%;
     padding: 10px;
     border-radius: 10px;
+    border: solid 1px var(--cor-cinza);
 }
 
 .fundo {

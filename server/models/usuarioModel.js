@@ -23,4 +23,14 @@ module.exports = {
         // Retorna pro controller o resultado, nesse caso o id do usuário inserido
         return resultado.insertId 
     }
+    ,
+
+    buscarPerfil : async (perfil, email) => {
+        // Query pra fazer a consulta no banco
+        const query = `SELECT perfil FROM Usuarios WHERE email = ?`
+        // Guarda o resultado da consulta na variável
+        const [resultado] = await db.execute(query, [email])
+        // Retorna pro controller o resultado, nesse caso o id do usuário inserido
+        return resultado[0] 
+    }
 }

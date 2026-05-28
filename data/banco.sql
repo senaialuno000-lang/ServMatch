@@ -7,26 +7,32 @@ USE servmatch;
 
 CREATE TABLE Usuario (
     idusuario   INT          NOT NULL AUTO_INCREMENT,
-    email       VARCHAR(50)  NOT NULL,
+    nome        VARCHAR(400)  NOT NULL,
+    email       VARCHAR(50)  NOT NULL UNIQUE,
     senha       VARCHAR(24)  NOT NULL,
-    perfil      ENUM('Contratante','Contratado'),
+    celular		VARCHAR(24) NOT NULL,
+    telefone    VARCHAR(18),
+    perfil      ENUM('Contratante','Contratado') NOT NULL,
     PRIMARY KEY (idusuario),
     UNIQUE KEY uq_usuario_email (email)
 );
 
+INSERT INTO Usuario VALUES(null,"usa@gmail.com","uua", 'Contratado');
+insert into Contratante(idcontratante, nome, celular, usuario_idusuario) values(null, "rodolfo","234234234", null);
+
+SELECT * FROM Usuario;
+SELECT * FROM Contratante;
 
 -- Tabela: Contratante
 
 CREATE TABLE Contratante (
     idcontratante   INT           NOT NULL AUTO_INCREMENT,
-    nome            VARCHAR(400)  NOT NULL,
-    telefone        VARCHAR(18),
-    CNPJ            INT,
+    CNPJ            INT UNIQUE,
     CEP             INT(8),
     cidade          VARCHAR(45),
     estado          VARCHAR(45),
     bairro          VARCHAR(45),
-    numeroCasa      INT,
+    numeroCasa      INT UNIQUE,
     imagem          VARCHAR(500),
     sobreMin        VARCHAR(1000),
     usuario_idusuario INT         NOT NULL,
@@ -42,19 +48,17 @@ CREATE TABLE Contratante (
 
 CREATE TABLE Contratado (
     idPrestadorServico                      INT          NOT NULL AUTO_INCREMENT,
-    Nome                                    VARCHAR(45)  NOT NULL,
-    Telefone                                VARCHAR(18),
-    CPF                                     VARCHAR(11),
+    CPF                                     VARCHAR(11) UNIQUE,
     CEP                                     VARCHAR(8),
     Estado                                  VARCHAR(30),
     Cidade                                  VARCHAR(40),
     Bairro                                  VARCHAR(45),
-    NumeroCasa                              INT,
+    NumeroCasa                              INT UNIQUE,
     imagemContratado                        VARCHAR(45),
     sobreMim                                VARCHAR(500),
     experienciasContratado_idexperiencias   INT,
     formacaoAcademicaContratada_idform      INT,
-    usuario_idusuario                       INT          NOT NULL,
+    usuario_idusuario                       INT NOT NULL,
     PRIMARY KEY (idPrestadorServico),
     CONSTRAINT fk_contratado_usuario
         FOREIGN KEY (usuario_idusuario)

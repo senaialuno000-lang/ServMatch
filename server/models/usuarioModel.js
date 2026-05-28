@@ -4,10 +4,12 @@ const db = require("../config/db.js")
 module.exports = {
     // Busca o usuário na tabela, com o email fornecido
     buscarPorEmail: async (email) =>{       
+        
         // Query pra fazer a consulta no banco
         const query = 'SELECT * FROM Usuario WHERE email = ?'
         // Guarda o resultado da consulta na variável
         const [linhas] = await db.execute(query, [email])
+        
         // Retorna pro controller o resultado, nesse caso o usuário encontrado
         return linhas[0]
     }

@@ -9,7 +9,7 @@ CREATE TABLE Usuario (
     idusuario   INT          NOT NULL AUTO_INCREMENT,
     nome        VARCHAR(400)  NOT NULL,
     email       VARCHAR(50)  NOT NULL UNIQUE,
-    senha       VARCHAR(24)  NOT NULL,
+    senha       VARCHAR(255)  NOT NULL,
     celular		VARCHAR(24) NOT NULL,
     telefone    VARCHAR(18),
     perfil      ENUM('Contratante','Contratado') NOT NULL,
@@ -17,11 +17,10 @@ CREATE TABLE Usuario (
     UNIQUE KEY uq_usuario_email (email)
 );
 
-INSERT INTO Usuario VALUES(null,"usa@gmail.com","uua", 'Contratado');
-insert into Contratante(idcontratante, nome, celular, usuario_idusuario) values(null, "rodolfo","234234234", null);
+
 
 SELECT * FROM Usuario;
-SELECT * FROM Contratante;
+
 
 -- Tabela: Contratante
 

@@ -19,9 +19,12 @@ module.exports = {
             const usuario = await usuarioModel.buscarPorEmail(email)
             // Se não existir, mensagem de erro
             if (!usuario) return res.status(404).render('erro', { mensagem: "Credenciais inválidas"})
+                            console.log(senha);
 
             // compara a senha que o usuário digitou, com a senha do usuario retornado no banco
-            const senhaValida = await bcrypt.compare(senha, usuario.senha)
+            const senhaValida = await bcrypt.compare(senha, usuario.senha); 
+            console.log(senhaValida);
+            
             // Se senhas não coincidirem, mensagem de erro
             if (!senhaValida) return res.status(404).render('erro', { mensagem: "Credenciais inválidas"})
 
@@ -51,7 +54,7 @@ module.exports = {
         res.redirect("/login")
     },
 
-     renderizarCadastro: (req, res) => {                                                                         // Função para renderizar a página de cadastro de usuário
+    renderizarCadastro: (req, res) => {                                                                         // Função para renderizar a página de cadastro de usuário
         res.render("usuario/cadastrar");                                                                        // Renderiza a página de cadastro de usuário
     },
 
@@ -59,12 +62,13 @@ module.exports = {
         try {
             const {nome, email, senha, celular, telefone, perfil} = req.body;
 
+            console.log(nome, email, senha, celular, telefone, perfil)
             if (perfil === "Contratante") {                                                                   // Verifica se o perfil selecionado é "administrador"
                 return res.status(403).render("erro", { mensagem: "Você não possui acesso" });                  // Renderiza a página de erro com uma mensagem de acesso negado se o perfil for "administrador"
             }
 
             const senhaHash = await bcrypt.hash(senha, 10);                                                         // Hash da senha usando bcrypt com um salt de 10 rounds     
-            await usuarioModel.criarUsuario(nome, email, senhaHash, telefone, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos
+            await usuarioModel.criarUsuario(nome, email, senhaHash, celular, telefone, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos
             let redirecionadoPara = "/login";
 
             if (req.cookies && req.cookies.token) {                                                                 // Verifica se o usuário está autenticado verificando a presença do token no cookie

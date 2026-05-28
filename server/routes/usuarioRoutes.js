@@ -12,6 +12,7 @@ router.post("/login", usuarioController.login)
 
 // Rota de saida
 router.get("/logout", usuarioController.logout)
+router.post("/cadastrar", usuarioController.cadastrar); 
 
 // ROTAS PRIVADAS
 
@@ -22,7 +23,7 @@ router.get("/", (req, res) => {
 
 //Retornar a página de cadastro
 router.get("/cadastro", (req, res) => {
-  res.json({ mensagem: "Estou na página de cadastro" });
+  res.status(200).render('usuarios/cadastrar');
 });
 
 router.get("/main", (req, res) => {

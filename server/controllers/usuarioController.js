@@ -49,6 +49,39 @@ module.exports = {
         res.clearCookie('token')
         // Volta pra tela de login
         res.redirect("/login")
+    },
+
+     renderizarCadastro: (req, res) => {                                                                         // Função para renderizar a página de cadastro de usuário
+        res.render("usuario/cadastrar");                                                                        // Renderiza a página de cadastro de usuário
+    },
+
+    cadastrar: async (req, res) => { 
+        try {
+            const {nome, email, senha, celular, telefone, perfil} = req.body;
+
+            if (perfil === "Contratante") {                                                                   // Verifica se o perfil selecionado é "administrador"
+                return res.status(403).render("erro", { mensagem: "Você não possui acesso" });                  // Renderiza a página de erro com uma mensagem de acesso negado se o perfil for "administrador"
+            }
+
+            const senhaHash = await bcrypt.hash(senha, 10);                                                         // Hash da senha usando bcrypt com um salt de 10 rounds     
+            await usuarioModel.criarUsuario(nome, email, senhaHash, telefone, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos
+            let redirecionadoPara = "/login";
+
+            if (req.cookies && req.cookies.token) {                                                                 // Verifica se o usuário está autenticado verificando a presença do token no cookie
+                try {
+                    const decodificado = jwt.verify(req.cookies.token, process.env.JWT_SECRET);                 // Verifica e decodifica o token JWT usando a chave secreta  
+                    if (decodificado.perfil === "Contratante") {                                              // Verifica se o perfil do usuário autenticado é "administrador"
+                        redirecionadoPara = "/usuarios";                                                        // Se o perfil do usuário autenticado for "administrador", redireciona para a página de administração de usuários
+                    }
+                } catch {
+
+                }
+            }
+            res.redirect(redirecionadoPara); 
+        } catch (erro) {
+            console.error(erro);                                                                                // Loga o erro no console para depuração
+            res.status(500).render("erro", { mensagem: "Erro ao cadastrar o usuário" });                        // Renderiza a página de erro com uma mensagem específica se ocorrer um erro durante o processo de cadastro do usuário
+        }
     }
 
 }

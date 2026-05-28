@@ -14,12 +14,12 @@ module.exports = {
     ,
     // CRUD
     // CREATE
-    criarUsuario : async (nome, email, senha, telefone) =>{
+    criarUsuario : async (nome, email, senha, celular, telefone, perfil) =>{
         // Query pra fazer a consulta no banco
-        const query = `INSERT INTO Usuario (nome, email, senha, telefone)
-                       VALUES (?,?,?,?)`
+        const query = `INSERT INTO Usuario (nome, email, senha, celular, telefone, perfil)
+                       VALUES (?,?,?,?,?,?)`
         // Guarda o resultado da consulta na variável
-        const [resultado] = await db.execute(query, [nome, email, senha, telefone])
+        const [resultado] = await db.execute(query, [nome, email, senha, celular, telefone, perfil])
         // Retorna pro controller o resultado, nesse caso o id do usuário inserido
         return resultado.insertId 
     }

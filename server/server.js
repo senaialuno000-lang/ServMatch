@@ -35,13 +35,16 @@ app.get("/cadastro", (req, res) => {                                            
     res.render("auth/cadastro");                                                    // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
 }); 
 
-app.get("/main", (req, res) => {                                                // Define uma rota GET para "/cadastro" (a função de callback está vazia, o que significa que não há resposta definida para essa rota)
-    res.render("auth/main");                                                    // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
+app.get("/main", (req, res) => {                                                    // Define uma rota GET para "/main" (a função de callback está vazia, o que significa que não há resposta definida para essa rota)
+    res.render("auth/main");                                                        // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
 }); 
 
 // Importar as rotas de usuário;
 const usuariosRoutes = require("./routes/usuarioRoutes.js");                        // Importa as rotas de usuário do arquivo usuarioRoutes.js
 app.use("/usuarios", usuariosRoutes);                                               // Usa as rotas de usuário para qualquer caminho que comece com "/usuarios"   
+
+const produtosRouter = require("./routes/produtosRoutes.js");                       // Importa as rotas de produtos do arquivo produtosRouter.js
+app.use("/produtos", produtosRouter);                                               // Usa as rotas de produtos para qualquer caminho que comece com "/produtos"
 
 const pool = require("./config/db.js");
 //Cria uma conexão teste com o banco

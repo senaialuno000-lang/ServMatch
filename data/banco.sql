@@ -11,7 +11,6 @@ CREATE TABLE Usuario (
     email       VARCHAR(50)  NOT NULL UNIQUE,
     senha       VARCHAR(255)  NOT NULL,
     celular		VARCHAR(24) NOT NULL,
-    telefone    VARCHAR(18),
     perfil      ENUM('Contratante','Contratado') NOT NULL,
     PRIMARY KEY (idusuario),
     UNIQUE KEY uq_usuario_email (email)

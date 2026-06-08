@@ -60,15 +60,15 @@ module.exports = {
 
     cadastrar: async (req, res) => { 
         try {
-            const {nome, email, senha, celular, telefone, perfil} = req.body;
+            const {nome, email, senha, celular, perfil} = req.body;
 
-            console.log(nome, email, senha, celular, telefone, perfil)
+            console.log(nome, email, senha, celular, perfil)
             if (perfil === "Contratante") {                                                                   // Verifica se o perfil selecionado é "administrador"
                 return res.status(403).render("erro", { mensagem: "Você não possui acesso" });                  // Renderiza a página de erro com uma mensagem de acesso negado se o perfil for "administrador"
             }
 
             const senhaHash = await bcrypt.hash(senha, 10);                                                         // Hash da senha usando bcrypt com um salt de 10 rounds     
-            await usuarioModel.criarUsuario(nome, email, senhaHash, celular, telefone, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos
+            await usuarioModel.criarUsuario(nome, email, senhaHash, celular, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos
             let redirecionadoPara = "/login";
 
             if (req.cookies && req.cookies.token) {                                                                 // Verifica se o usuário está autenticado verificando a presença do token no cookie

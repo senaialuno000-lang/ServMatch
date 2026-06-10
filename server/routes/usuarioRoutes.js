@@ -8,7 +8,7 @@ const usuarioController = require("../controllers/usuarioController.js")
 // Declaração das rotas do usuário
 // ROTAS PÚBLICAS
 // Envia os dados de login
-router.get("/login", usuarioController.login)
+router.post("/login", usuarioController.login)
 
 // Rota de saida
 router.get("/logout", usuarioController.logout)

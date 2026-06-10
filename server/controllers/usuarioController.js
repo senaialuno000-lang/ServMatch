@@ -40,7 +40,7 @@ module.exports = {
 
             // Redirecionamento de acordo com o perfil
             if(usuario.perfil === "Contratante") return res.redirect("/produtos/meus-produtos")
-            if(usuario.perfil === "Contratado") return res.redirect("/produtos/vitrine")
+            if(usuario.perfil === "Candidato") return res.redirect("/produtos/vitrine")
         }
         catch(erro){
             res.status(500).render('erro', { mensagem: "Erro interno no servidor"})
@@ -63,9 +63,6 @@ module.exports = {
             const {nome, email, senha, celular, perfil} = req.body;
 
             console.log(nome, email, senha, celular, perfil)
-            if (perfil === "Contratante") {                                                                   // Verifica se o perfil selecionado é "administrador"
-                return res.status(403).render("erro", { mensagem: "Você não possui acesso" });                  // Renderiza a página de erro com uma mensagem de acesso negado se o perfil for "administrador"
-            }
 
             const senhaHash = await bcrypt.hash(senha, 10);                                                         // Hash da senha usando bcrypt com um salt de 10 rounds     
             await usuarioModel.criarUsuario(nome, email, senhaHash, celular, perfil);            // Chama a função do modelo para criar um novo usuário no banco de dados com os dados fornecidos

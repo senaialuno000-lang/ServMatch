@@ -89,7 +89,7 @@ module.exports = {
             // Se deu certo, mostra a página de usuários
             // const usuarios = await usuarioModel.listarUsuarios()
             // Renderiza a tela de usuários, passando o objeto com a lista completa
-            res.render('usuarios/candidato/candidatoPaginaInicial') //, { usuarios }
+            res.render('usuarios/candidato/candidatoPaginaInicial'); //, { usuarios }
         }
         catch(erro){
             // se deu erro, mostra a tela de erro padrão pra pessoa

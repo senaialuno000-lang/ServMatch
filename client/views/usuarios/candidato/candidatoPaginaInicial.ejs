@@ -1,11 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServMatch – Home</title>
+  <link rel="stylesheet" href="/css/layout.css" />
 </head>
 <body>
-    <h1>Pagina inicial do candidato</h1>
+
+  <%- include('../../partials/aside', { currentPage: 'home' }) %>
+
+  <div class="main-wrapper">
+
+    <%- include('../../partials/topbar') %>
+
+    <main class="page-body">
+
+      <h1 style="font-size: 26px; font-weight: 600; margin-bottom: 6px; color: #111;">
+        Bem-Vindo<% if (locals.usuario) { %>, <%= locals.usuario.nome %><% } %>!
+      </h1>
+      <p style="color: var(--cor-cinza); margin-bottom: 28px; font-size: 15px;">
+        Bem-vindo à busca de vagas. Aplique os filtros com base em sua vaga dos sonhos.
+      </p>
+
+      <div style="display: flex; gap: 24px; align-items: flex-start;">
+
+        <!-- LISTA DE VAGAS -->
+        <div style="flex: 1; display: flex; flex-direction: column; gap: 16px;">
+          <h2 style="font-size: 17px; font-weight: 700; color: #111; margin-bottom: 4px;">
+            Vagas recomendadas pra você
+          </h2>
+
+          <% 
+            const vagas = locals.vagas || [
+              { titulo: 'Título da vaga', descricao: 'Descrição da vaga: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed vestibulum lacus.', contratante: 'Contratante', salario: 'R$ 750 – 1200', local: 'Vila Velha' },
+              { titulo: 'Título da vaga', descricao: 'Descrição da vaga: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed vestibulum lacus.', contratante: 'Contratante', salario: 'R$ 750 – 1200', local: 'Vila Velha' },
+              { titulo: 'Título da vaga', descricao: 'Descrição da vaga: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed vestibulum lacus.', contratante: 'Contratante', salario: 'R$ 750 – 1200', local: 'Vila Velha' },
+            ];
+          %>
+
+          <% vagas.forEach(vaga => { %>
+          <div style="
+            background: #fff;
+            border: 1px solid #e4e6ea;
+            border-radius: 12px;
+            padding: 20px 22px;
+          ">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+              <span style="font-size: 17px; font-weight: 700; color: #111;"><%= vaga.titulo %></span>
+              <a href="#" style="
+                background-color: var(--btn-background);
+                color: #fff;
+                border: none;
+                border-radius: 8px;
+                padding: 9px 18px;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+                text-decoration: none;
+                font-family: inherit;
+              ">Candidatar-se</a>
+            </div>
+
+            <p style="font-size: 14px; color: var(--cor-cinza); margin-bottom: 16px; line-height: 1.6;">
+              <%= vaga.descricao %>
+            </p>
+
+            <div style="display: flex; align-items: center; gap: 24px; font-size: 13px; color: var(--cor-cinza);">
+              <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 26px; height: 26px; border-radius: 50%; background: #ddd; display: inline-block;"></span>
+                <%= vaga.contratante %>
+              </span>
+              <span style="display: flex; align-items: center; gap: 5px;">
+                💰 <%= vaga.salario %>
+              </span>
+              <span style="display: flex; align-items: center; gap: 5px;">
+                📍 <%= vaga.local %>
+              </span>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+
+        <!-- FILTROS -->
+        <div style="
+          width: 220px;
+          flex-shrink: 0;
+          background: #fff;
+          border: 1px solid #e4e6ea;
+          border-radius: 12px;
+          padding: 20px;
+        ">
+          <h3 style="font-size: 16px; font-weight: 700; color: #111; margin-bottom: 18px;">Filtros</h3>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 13px; color: #111; font-weight: 500; display: block; margin-bottom: 6px;">Modalidade</label>
+            <select name="modalidade" style="
+              width: 100%; padding: 10px 12px; border: 1px solid #ddd;
+              border-radius: 8px; font-size: 13px; color: #333;
+              background: #fff; outline: none; cursor: pointer;
+            ">
+              <option>Todas</option>
+              <option>Presencial</option>
+              <option>Remoto</option>
+              <option>Híbrido</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 13px; color: #111; font-weight: 500; display: block; margin-bottom: 6px;">Faixa Salarial</label>
+            <select name="salario" style="
+              width: 100%; padding: 10px 12px; border: 1px solid #ddd;
+              border-radius: 8px; font-size: 13px; color: #333;
+              background: #fff; outline: none; cursor: pointer;
+            ">
+              <option>R$ 500 – 2000</option>
+              <option>R$ 2000 – 5000</option>
+              <option>R$ 5000+</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 16px;">
+            <label style="font-size: 13px; color: #111; font-weight: 500; display: block; margin-bottom: 6px;">Data de publicação</label>
+            <select name="data" style="
+              width: 100%; padding: 10px 12px; border: 1px solid #ddd;
+              border-radius: 8px; font-size: 13px; color: #333;
+              background: #fff; outline: none; cursor: pointer;
+            ">
+              <option>Última Semana</option>
+              <option>Último Mês</option>
+              <option>Qualquer data</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom: 20px;">
+            <label style="font-size: 13px; color: #111; font-weight: 500; display: block; margin-bottom: 6px;">Localização</label>
+            <select name="local" style="
+              width: 100%; padding: 10px 12px; border: 1px solid #ddd;
+              border-radius: 8px; font-size: 13px; color: #333;
+              background: #fff; outline: none; cursor: pointer;
+            ">
+              <option>Vila Velha</option>
+              <option>Vitória</option>
+              <option>Cariacica</option>
+              <option>Serra</option>
+            </select>
+          </div>
+
+          <button style="
+            width: 100%;
+            background-color: var(--cor-servmatch);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            padding: 11px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+          ">Aplicar filtros</button>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
 </body>
 </html>

@@ -1,12 +1,11 @@
 // importação do model
-const UsuarioModel = require("../models/usuarioModel.js")
+const usuarioModel = require("../models/usuarioModel.js")
 
 // importar pacotes
 // para criptrograffia
 const bcrypt = require('bcrypt')
 // para lidar com cookies
 const jwt = require('jsonwebtoken')
-const usuarioModel = require("../models/usuarioModel.js")
 
 module.exports = {
     //FUNÇÕES DE LOGIN
@@ -39,8 +38,8 @@ module.exports = {
             res.cookie('token', token, { httpOnly: true })
 
             // Redirecionamento de acordo com o perfil
-            if(usuario.perfil === "Contratante") return res.redirect("/produtos/meus-produtos")
-            if(usuario.perfil === "Candidato") return res.redirect("/produtos/vitrine")
+            if(usuario.perfil === "Contratante") return res.redirect("/usuarios/contratante");
+            if(usuario.perfil === "Candidato") return res.redirect("/usuarios/candidato");
         }
         catch(erro){
             res.status(500).render('erro', { mensagem: "Erro interno no servidor"})
@@ -83,6 +82,32 @@ module.exports = {
             console.error(erro);                                                                                // Loga o erro no console para depuração
             res.status(500).render("erro", { mensagem: "Erro ao cadastrar o usuário" });                        // Renderiza a página de erro com uma mensagem específica se ocorrer um erro durante o processo de cadastro do usuário
         }
-    }
+    },
+
+    paginaPrincipalCandidato: async (req, res) => {
+        try{
+            // Se deu certo, mostra a página de usuários
+            // const usuarios = await usuarioModel.listarUsuarios()
+            // Renderiza a tela de usuários, passando o objeto com a lista completa
+            res.render('usuarios/candidato/candidatoPaginaInicial') //, { usuarios }
+        }
+        catch(erro){
+            // se deu erro, mostra a tela de erro padrão pra pessoa
+            res.status(500).render('erro', {mensagem: "Erro ao listar usuários"})           
+        }
+    },
+
+    paginaContratante: async (req, res) => {
+        try{
+            // Se deu certo, mostra a página de usuários
+            // const usuarios = await usuarioModel.listarUsuarios()
+            // Renderiza a tela de usuários, passando o objeto com a lista completa
+            res.render('usuarios/contratante/paginaContratante') //, { usuarios }
+        }
+        catch(erro){
+            // se deu erro, mostra a tela de erro padrão pra pessoa
+            res.status(500).render('erro', {mensagem: "Erro ao listar usuários"})           
+        }
+    },
 
 }

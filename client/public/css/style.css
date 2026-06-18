@@ -1,11 +1,16 @@
 @import url(./login.css);
 @import url(./cadastro.css);    
+@import url(./layout.css);
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
+/* ================================
+   Variáveis do style.css original
+   ================================ */
 
 :root{
     --font-pequena-tamanho: 22px;
@@ -15,4 +20,5 @@
     --cor-cinza: #686868;
     --btn-background: #0BB137;
     --tamanho-height: 60px;
+    --sidebar-width: 400px;
 }

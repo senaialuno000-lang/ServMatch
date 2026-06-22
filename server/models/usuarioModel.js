@@ -34,5 +34,14 @@ module.exports = {
         const [resultado] = await db.execute(query, [email])
         // Retorna pro controller o resultado, nesse caso o id do usuário inserido
         return resultado[0] 
+    },
+
+    listarVagas : async (perfil, email) => {
+        // Query pra fazer a consulta no banco
+        const query = `SELECT tituloVaga, localidadeVaga, salario, descricaoVaga FROM Vagas`
+        // Guarda o resultado da consulta na variável
+        const [linhas] = await db.execute(query)
+
+        return linhas
     }
 }

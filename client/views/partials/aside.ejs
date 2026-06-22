@@ -5,13 +5,17 @@
     <div class="sidebar__avatar">
       <% if (locals.usuario && locals.usuario.foto) { %>
         <img src="<%= locals.usuario.foto %>" alt="Foto" />
-      <% } else { %>
-        <div class="sidebar__avatar-placeholder"></div>
-      <% } %>
+        <% } else { %>
+          <div class="sidebar__avatar-placeholder"></div>
+          <% } %>
     </div>
     <div class="sidebar__user-info">
-      <span class="sidebar__user-name"><%= locals.usuario ? locals.usuario.nome : 'Usuário' %></span>
-      <span class="sidebar__user-role"><%= locals.usuario ? locals.usuario.perfil : '' %></span>
+      <span class="sidebar__user-name">
+        <%= locals.usuario ? locals.usuario.nome : 'Usuário' %>
+      </span>
+      <span class="sidebar__user-role">
+        <%= locals.usuario ? locals.usuario.perfil : '' %>
+      </span>
     </div>
   </div>
 
@@ -19,29 +23,54 @@
     <ul>
       <li>
         <a href="<%= locals.usuario && locals.usuario.perfil === 'Contratante' ? '/usuarios/contratante' : '/usuarios/candidato' %>"
-           class="sidebar__nav-link <%= locals.currentPage === 'home' ? 'sidebar__nav-link--active' : '' %>">
+        class="sidebar__nav-link <%= locals.currentPage === 'home' ? 'sidebar__nav-link--active' : '' %>">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
           </svg>
-          <span>Home</span>
+        <span>Home</span>
         </a>
       </li>
+      <%if (locals.usuario && (locals.usuario.perfil === 'Candidato')) { %>
       <li>
         <a href="/usuarios/candidato/vagas"
-           class="sidebar__nav-link <%= locals.currentPage === 'vagas' ? 'sidebar__nav-link--active' : '' %>">
+        class="sidebar__nav-link <%= locals.currentPage === 'vagas' ? 'sidebar__nav-link--active' : '' %>">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-            <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+          <path
+          d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
           </svg>
           <span>Minhas Vagas</span>
         </a>
       </li>
+      <% } else { %>
+      <li>
+        <a href="/usuarios/contratante/vagas"
+        class="sidebar__nav-link <%= locals.currentPage === 'vagas' ? 'sidebar__nav-link--active' : '' %>">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+          <path
+          d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
+          </svg>
+          <span>Vagas Anunciadas</span>
+        </a>
+      </li>
+      <li>
+        <a href="/usuarios/contratante/anuncio"
+        class="sidebar__nav-link <%= locals.currentPage === 'anuncio' ? 'sidebar__nav-link--active' : '' %>">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640" fill="currentColor" width="20" height="20">
+            <path 
+            d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 320L576 320L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM576 368L384 368L384 384C384 401.7 369.7 416 352 416L288 416C270.3 416 256 401.7 256 384L256 368L64 368L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 368z"/>
+          </svg>
+          <span>Criar Anúncio</span>
+        </a>
+      </li>
+      <% } %>
     </ul>
   </nav>
 
   <div class="sidebar__footer">
     <a href="/usuarios/logout" class="sidebar__logout">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-        <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/>
+        <path
+          d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
       </svg>
       <span>Sair</span>
     </a>

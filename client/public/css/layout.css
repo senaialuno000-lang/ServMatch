@@ -1,25 +1,3 @@
-/* ================================
-   Variáveis do style.css original
-   ================================ */
-:root {
-  --font-pequena-tamanho: 22px;
-  --font-grande-tamanho: 30px;
-  --cor-servmatch: #3586FF;
-  --cor-fundo: white;
-  --cor-cinza: #686868;
-  --btn-background: #0BB137;
-  --tamanho-height: 60px;
-
-  /* Derivadas de layout */
-  --sidebar-width: 300px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
   font-family: 'Segoe UI', sans-serif;
   background-color: var(--cor-fundo);

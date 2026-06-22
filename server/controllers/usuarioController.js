@@ -87,9 +87,9 @@ module.exports = {
     paginaPrincipalCandidato: async (req, res) => {
         try{
             // Se deu certo, mostra a página de usuários
-            // const usuarios = await usuarioModel.listarUsuarios()
+            const vagas = await usuarioModel.listarVagas()
             // Renderiza a tela de usuários, passando o objeto com a lista completa
-            res.render('usuarios/candidato/candidatoPaginaInicial'); //, { usuarios }
+            res.render('usuarios/candidato/candidatoPaginaInicial', { vagas }); //, { usuarios }
         }
         catch(erro){
             // se deu erro, mostra a tela de erro padrão pra pessoa
@@ -102,12 +102,28 @@ module.exports = {
             // Se deu certo, mostra a página de usuários
             // const usuarios = await usuarioModel.listarUsuarios()
             // Renderiza a tela de usuários, passando o objeto com a lista completa
-            res.render('usuarios/contratante/paginaContratante') //, { usuarios }
+            res.render('usuarios/contratante/paginaContratante'); //, { usuarios }
         }
         catch(erro){
             // se deu erro, mostra a tela de erro padrão pra pessoa
             res.status(500).render('erro', {mensagem: "Erro ao listar usuários"})           
         }
     },
+    
+    //READ OU LISTAR VAGAS
+
+    // listarVagas: async (req, res) => {
+
+    //     try{
+
+    //         const vagas = await usuarioModel.listarVagas()
+
+    //         res.render("usuarios/candidatoPaginaInicial.ejs", { vagas })
+
+    //     }catch(erro){
+    //         res.status(500).render('erro', 
+    //         {mensagem: "Erro ao listar Usuários"})
+    //     }
+    // }
 
 }

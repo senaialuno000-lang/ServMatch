@@ -35,8 +35,8 @@ app.get("/cadastro", (req, res) => {                                            
     res.render("auth/cadastro");                                                    // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
 }); 
 
-app.get("/main", (req, res) => {                                                    // Define uma rota GET para "/main" (a função de callback está vazia, o que significa que não há resposta definida para essa rota)
-    res.render("auth/main");                                                        // Tenta renderizar um arquivo EJS  como resposta, mas há um erro de sintaxe aqui (falta o parâmetro 'res' na função de callback)
+app.get("/recuperarSenha", (req, res) => {
+    res.render("auth/recuperarSenha");
 }); 
 
 // Importar as rotas de usuário;

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ServMatch – Recuperar Senha</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f2f5;
+    }
+
+    .page {
+      display: flex;
+      /* width: 100%; */
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+
+    .left, .right {
+      width: 50%;
+      height: 100vh;
+    }
+
+    .left {
+      background: #2B7FE8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2.5rem;
+      
+     
+    }
+    .left .brand { font-size: 120px; font-weight: 800; color: #fff;  }
+    .left .tagline { font-size: 30px; color: rgba(255,255,255,0.85); margin-top: -15px; }
+
+    .right {
+      flex: 1;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 2rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 14px;
+      padding: 2rem 2rem 1.5rem;
+      height: 600px;
+      box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.253);
+    }
+
+    #etapa1 {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1rem;
+      height: 100%;
+    }
+
+    .card h1 { font-size: 50px; font-weight: 800; color: var(--cor-cinza); margin-bottom: 10px; }
+    .card .desc { font-size: 14px; color: #555; line-height: 1.55; margin-bottom: 1.5rem; }
+
+    .card label { display: block; font-size: var(--font-pequena-tamanho); font-weight: 600; color: #333; margin-bottom: -15px; }
+
+    .card input[type="email"],
+    .card input[type="text"] {
+      width: 100%;
+      height: 50px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+      color: #111;
+      font-size: 14px;
+      padding: 7px 12px;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      margin-bottom: 1.25rem;
+    }
+    .card input:focus {
+      border-color: #2B7FE8;
+      box-shadow: 0 0 0 3px rgba(43,127,232,0.18);
+    }
+
+    .btn-enviar {
+      width: 100%;
+      height: 44px;
+      background: #22C55E;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s, transform 0.1s;
+      margin-bottom: 1.1rem;
+    }
+    .btn-enviar:hover { background: #16A34A; }
+    .btn-enviar:active { transform: scale(0.98); }
+    .btn-enviar:disabled { background: #9ca3af; cursor: not-allowed; }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      font-size: 13px;
+      color: #555;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .back-link:hover { color: #2B7FE8; text-decoration: underline; }
+
+    .msg {
+      display: none;
+      font-size: 13px;
+      border-radius: 8px;
+      padding: 8px 12px;
+      margin-bottom: 1rem;
+    }
+    .msg.sucesso { display: block; background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .msg.erro    { display: block; background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    /* Etapa 2 – digitar o código */
+    #etapa2 { display: none; }
+
+    @media (max-width: 640px) {
+      .page { flex-direction: column; width: 95%; min-height: unset; }
+      .left { flex: unset; padding: 2rem 1.5rem; }
+      .right { padding: 1.5rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div class="left">
+    <div class="brand">ServMatch</div>
+    <div class="tagline">Encontre o seu match profissional</div>
+  </div>
+
+  <div class="right">
+    <div class="card">
+
+      <!-- ===== ETAPA 1 – Inserir e-mail ===== -->
+      <div id="etapa1">
+        <h1>Recuperar Senha</h1>
+        <p class="desc">
+          Esqueceu a senha? Sem problemas!<br>
+          Insira o e-mail cadastrado e enviaremos um código de recuperação.
+        </p>
+
+        <div id="msg1" class="msg"></div>
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" autocomplete="email" />
+
+        <button class="btn-enviar" id="btnEnviar">Enviar Código</button>
+        <a class="back-link" href="/login">Voltar para tela de Login.</a>
+      </div>
+
+      <!-- ===== ETAPA 2 – Inserir código + nova senha ===== -->
+      <div id="etapa2">
+        <h1>Nova Senha</h1>
+        <p class="desc">
+          Digite o código recebido no e-mail e escolha uma nova senha.
+        </p>
+
+        <div id="msg2" class="msg"></div>
+
+        <label for="codigo">Código de verificação</label>
+        <input type="text" id="codigo" placeholder="Ex: 482910" maxlength="6" />
+
+        <label for="novaSenha">Nova senha</label>
+        <input type="password" id="novaSenha" placeholder="Mínimo 6 caracteres" />
+
+        <label for="confirmarSenha">Confirmar nova senha</label>
+        <input type="password" id="confirmarSenha" placeholder="Repita a senha" />
+
+        <button class="btn-enviar" id="btnRedefinir">Redefinir Senha</button>
+        <a class="back-link" href="/login">Voltar para tela de Login.</a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="/js/recuperarSenha.js"></script>
+
+</body>
+</html>

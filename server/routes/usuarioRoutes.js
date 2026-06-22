@@ -16,6 +16,7 @@ const { verificaAutenticacao, somenteContratante, somenteCandidato } = require("
 // Envia os dados de login
 router.post("/login", usuarioController.login)
 
+
 // Rota de saida
 router.get("/logout", usuarioController.logout)
 router.post("/cadastrar", usuarioController.cadastrar); 

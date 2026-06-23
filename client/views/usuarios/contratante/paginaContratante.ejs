@@ -10,10 +10,35 @@
         <%- include('../../partials/aside', { currentPage: 'home' }) %>
         <div class="main-wrapper">
 
-        <%- include('../../partials/topbar') %>
+            <%- include('../../partials/topbar') %>
 
-        <main class="page-body">
-        </main>
+            <main class="page-body">
+                <h1>Bem Vindo</h1>
+                <p>Bem-Vindo à busca de Profissionais. Aplique os filtros com base em sua vaga dos sonhos.</p>
+                <h2>Alguns Profissionais</h2>
+
+                <article id="campoCards">
+                        <section class="card">
+                            <div>
+                                <div>
+                                    <figure>
+                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbk1I9cJwZys_Y9hYXlqnEoEVGnVJH9WwFIw&s" alt=""> <!-- Voltar aqui depois para mudar para adicionar uma foto-->
+                                    </figure>
+                                </div>
+                                <div>
+                                    <h3>Fulano de Tal</h3>
+                                    <p>Desenvolvedor Back-End</p>
+                                </div>
+                            </div>
+                            <div>
+                                <p>Descrição da vaga: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed vestibulum lacus.</p>
+                            </div>
+                            <div>
+                                <span>html</span><span>css</span><span>javascript</span>
+                            </div>
+                        </section>
+                </article>
+            </main>
         </div>
     </body>
 </html>

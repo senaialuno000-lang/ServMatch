@@ -100,9 +100,9 @@ module.exports = {
     paginaContratante: async (req, res) => {
         try{
             // Se deu certo, mostra a página de usuários
-            // const usuarios = await usuarioModel.listarUsuarios()
+            const usuarios = await usuarioModel.listarUsuarios();
             // Renderiza a tela de usuários, passando o objeto com a lista completa
-            res.render('usuarios/contratante/paginaContratante'); //, { usuarios }
+            res.render('usuarios/contratante/paginaContratante', { usuarios }); //
         }
         catch(erro){
             // se deu erro, mostra a tela de erro padrão pra pessoa

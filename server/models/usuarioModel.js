@@ -43,5 +43,12 @@ module.exports = {
         const [linhas] = await db.execute(query)
 
         return linhas
+    }, 
+
+    listarUsuarios : async (perfil, email) => {
+        const query = `SELECT nome FROM Usuario WHERE perfil = 'Candidato'`;
+        const [linhas] = await db.execute(query);
+        return linhas;
     }
+
 }

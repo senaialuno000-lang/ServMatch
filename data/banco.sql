@@ -20,6 +20,9 @@ CREATE TABLE Usuario (
 
 SELECT * FROM Usuario;
 
+INSERT INTO Usuario(nome, email, senha, celular, perfil)
+VALUES('matheus', 'tasd@gmail.com', '$2a$10$AJNCPhwD./hfIGN7Z85Ra.L17gnd9iSHhb/h.bv46laDKL6N2Qhja', '999999999', 'Candidato');
+
 
 -- Tabela: Contratante
 

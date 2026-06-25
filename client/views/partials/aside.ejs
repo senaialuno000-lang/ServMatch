@@ -32,7 +32,7 @@
       </li>
       <%if (locals.usuario && (locals.usuario.perfil === 'Candidato')) { %>
       <li>
-        <a href="/usuarios/candidato/vagas"
+        <a href="/usuarios/vagasCandidato"
         class="sidebar__nav-link <%= locals.currentPage === 'vagas' ? 'sidebar__nav-link--active' : '' %>">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
           <path
@@ -43,7 +43,7 @@
       </li>
       <% } else { %>
       <li>
-        <a href="/usuarios/contratante/vagas"
+        <a href="/usuarios/vagasContratante"
         class="sidebar__nav-link <%= locals.currentPage === 'vagas' ? 'sidebar__nav-link--active' : '' %>">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
           <path

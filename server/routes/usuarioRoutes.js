@@ -23,18 +23,12 @@ router.post("/cadastrar", usuarioController.cadastrar);
 
 router.use(verificaAutenticacao) // Aplica a autenticação a todas as rotas abaixo
 
-// if(UsuarioModel.perfil === "Contratante"){
-//   router.use(somenteContratante) // Aplica a restrição de contratante a todas as rotas abaixo
-// } else if (UsuarioModel.perfil === "Candidato") {
-//   router.use(somenteCandidato) // Aplica a restrição de candidato a todas as rotas abaixo
-// }
-
 // CORRETO - aplica middleware por rota
 router.get("/contratante", verificaAutenticacao, somenteContratante, usuarioController.paginaContratante)
 router.get("/candidato",   verificaAutenticacao, somenteCandidato,   usuarioController.paginaPrincipalCandidato)
 
 // ROTAS PRIVADAS
-
+router.get("/vagasContratante", verificaAutenticacao, somenteContratante, usuarioController.vagasContratante);
 // Obtém a lista de usuários
 router.get("/", usuarioController.paginaPrincipalCandidato);
 

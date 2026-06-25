@@ -109,6 +109,15 @@ module.exports = {
             res.status(500).render('erro', {mensagem: "Erro ao listar usuários"})           
         }
     },
+
+    vagasContratante: async (req, res) => {
+        try{
+            res.render('usuarios/contratante/vagasContratante'); //, { usuarios }
+        } catch(erro) {
+            // se deu erro, mostra a tela de erro padrão pra pessoa
+            res.status(500).render('erro', {mensagem: "Erro ao mostrar vagas do contratante"})           
+        }
+    }
     
     //READ OU LISTAR VAGAS
 

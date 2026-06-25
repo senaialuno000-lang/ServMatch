@@ -21,8 +21,7 @@
     padding: 0 10%;
     gap: 30px;
     display: flex;
-    flex-direction: column;
-    
+    flex-direction: column; 
 }
 
 .campoForm h2 {

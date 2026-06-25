@@ -8,18 +8,20 @@ USE servmatch;
 CREATE TABLE Usuario (
     idusuario   INT          NOT NULL AUTO_INCREMENT,
     nome        VARCHAR(400)  NOT NULL,
-    email       VARCHAR(50)  NOT NULL UNIQUE,
+    email       VARCHAR(50)  NOT NULL,
     senha       VARCHAR(255)  NOT NULL,
     celular		VARCHAR(24) NOT NULL,
-    perfil      ENUM('Contratante','Candidato') NOT NULL,
+    telefone    VARCHAR(18),
+    perfil      ENUM('Contratante','Contratado') NOT NULL,
     PRIMARY KEY (idusuario),
     UNIQUE KEY uq_usuario_email (email)
 );
 
-
-
+INSERT INTO Usuario VALUES(null,"usua","usua@gmail.com","$2a$10$zX55t4a/.51jAsJ8iUakKe.o3kdNflMc2lxNwLuFixTje5y4HUOJi","234234","3423423", 'Contratado');
 SELECT * FROM Usuario;
 
+insert into Vagas values(null, "vaga 5", "Presencial", "asdas", "Vitória", "sadasd", 500.0, "Trabalho em Vitória de programação", "aberta", 1);
+select tituloVaga, localidadeVaga, salario, descricaoVaga  from Vagas;
 
 -- Tabela: Contratante
 
@@ -64,6 +66,7 @@ CREATE TABLE Contratado (
         ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+insert into Contratante values(1, null,null,null,null,null,null,null,null,1);
 
 -- Tabela: ExperienciasContratado
 
@@ -147,7 +150,6 @@ CREATE TABLE Vagas (
         REFERENCES Contratante (idcontratante)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 
 -- Tabela: Candidatura  (tabela associativa Contratado <-> Vagas)
 

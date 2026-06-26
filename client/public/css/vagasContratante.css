@@ -1,0 +1,62 @@
+table {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.358);
+}
+
+table thead {
+    color: var(--cor-fundo);
+    background-color: var(--cor-servmatch);
+}
+
+table thead th {
+    padding: 5px;
+}
+
+table tbody td{
+    padding: 5px;
+    text-align: center;
+    border-bottom: 1px solid var(--cor-cinza);
+}
+
+.status-aberto {
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(0, 173, 0);
+}
+
+.status-fechado {
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    background-color: rgb(255, 0, 0);
+}
+
+table tbody td:nth-child(4) {
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn-vaga {
+    width: 38px;
+    height: 38px;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.358);
+}
+
+.btn-vaga i {
+    color: var(--cor-servmatch);
+} 
+
+.btn-vaga:hover {
+    background-color: var(--cor-servmatch);
+}
+.btn-vaga:hover i {
+    color: #ffffff;
+}

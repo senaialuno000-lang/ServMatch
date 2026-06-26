@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Pagina Inicial</title>
         <link rel="stylesheet" href="/css/style.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     </head>
 
     <body>
@@ -14,6 +15,34 @@
             <%- include('../../partials/topbar') %>
 
             <main class="page-body">
+                <h1>Minhas Vagas Anunciadas</h1>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Titulo da Vaga</th>
+                            <th>Status</th>
+                            <th>Candidatos Inscritos</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- class="<%= vaga.status === 'aberto' ? 'status-aberto' : 'status-fechado'%>" -->
+                        <tr>
+                            <td >titulo</td>
+                            <td >aberto</td>
+                            <td>11</td>
+                            <td>
+                                <a href="#" class="btn-vaga">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                                <a href="#" class="btn-vaga">
+                                    <i class="fa-solid fa-pencil fa-rotate-by" style=" --fa-rotate-angle: 3586deg;"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </main>
         </div>
     </body>

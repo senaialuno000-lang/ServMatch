@@ -1,45 +1,28 @@
-// importação do módulo express
-const express = require("express");
-const router = express.Router();
-const UsuarioModel = require("../models/usuarioModel.js")
+const express = require("express");                                                                                           // importação do módulo express;
+const router = express.Router();                                                                                              // criação de um roteador do express;
+const UsuarioModel = require("../models/usuarioModel.js");                                                                    // importação do model de usuário;
+const usuarioController = require("../controllers/usuarioController.js");                                                     // importação do controller de usuário;  
+const { verificaAutenticacao, somenteContratante, somenteCandidato } = require("../middlewares/authmiddleware.js");           // Importar o middleware de autenticação;
 
+/*===================================================================
+.................. Declaração das rotas do usuário ..................           
+===================================================================*/ 
 
-// Importar o controller do usuario
-const usuarioController = require("../controllers/usuarioController.js")
-
-// Importar o middleware de autenticação
-const { verificaAutenticacao, somenteContratante, somenteCandidato } = require("../middlewares/authmiddleware.js");
-
-
-// Declaração das rotas do usuário
 // ROTAS PÚBLICAS
-// Envia os dados de login
-router.post("/login", usuarioController.login)
-
-
-// Rota de saida
-router.get("/logout", usuarioController.logout)
-router.post("/cadastrar", usuarioController.cadastrar); 
-
-router.use(verificaAutenticacao) // Aplica a autenticação a todas as rotas abaixo
-
-// CORRETO - aplica middleware por rota
-router.get("/contratante", verificaAutenticacao, somenteContratante, usuarioController.paginaContratante)
-router.get("/candidato",   verificaAutenticacao, somenteCandidato,   usuarioController.paginaPrincipalCandidato)
+router.post("/login", usuarioController.login);                                                                               // Envia os dados de login;
+router.get("/logout", usuarioController.logout);                                                                              // Envia os dados de logout;
+router.post("/cadastrar", usuarioController.cadastrar);                                                                       // Envia os dados de cadastro;
 
 // ROTAS PRIVADAS
-router.get("/vagasContratante", verificaAutenticacao, somenteContratante, usuarioController.vagasContratante);
-// Obtém a lista de usuários
-router.get("/", usuarioController.paginaPrincipalCandidato);
+router.use(verificaAutenticacao);                                                                                             // Aplica o middleware de autenticação para todas as rotas abaixo
 
-//Retornar a página de cadastro
-router.get("/cadastro", (req, res) => {
-  res.status(200).render('usuarios/cadastrar');
-});
+// Candidato
+router.get("/candidato", verificaAutenticacao, somenteCandidato,   usuarioController.paginaPrincipalCandidato);               // Rota para mostrar a página principal do candidato;
 
-router.get("/main", (req, res) => {
-  res.json({ mensagem: "Estou na página main" });
-});
+// Contratante
+router.get("/contratante", verificaAutenticacao, somenteContratante, usuarioController.paginaContratante);                    // Rota para mostrar a página principal do contratante;
+router.get("/vagasContratante", verificaAutenticacao, somenteContratante, usuarioController.vagasContratante);                // Rota para mostrar a página de vagas do contratante;
+router.get("/criarVagasContratante", verificaAutenticacao, somenteContratante, usuarioController.criarVagasContratante);      // Rota para mostrar a página de criação de vagas do contratante;
 
 
-module.exports = router
+module.exports = router;                                                                                                      // Exporta o roteador para ser usado em outros arquivos do projeto;

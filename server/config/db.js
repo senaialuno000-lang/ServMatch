@@ -1,4 +1,4 @@
-const mysql = require('mysql2/promise')
+const mysql = require('mysql2/promise');
 
 //cria uma pool de conexão, varias conexões de uma vez, para evitar erros no banco
 const pool = mysql.createPool({
@@ -9,7 +9,7 @@ const pool = mysql.createPool({
     waitForConnections: true, //se todas conexões estiverem ocupadas, sem dar erro
     connectionLimit: 10,//quantidade maxima de conexões ao mesmo tempo
     queueLimit: 0 //0 = ilimitado
-})
+});
 
 //exporta as informações do banco, pros models utilizarem
 module.exports = pool;

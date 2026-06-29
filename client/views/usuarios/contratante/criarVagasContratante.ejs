@@ -7,13 +7,73 @@
         <link rel="stylesheet" href="/css/style.css"/>
     </head>
     <body>
-        <%- include('../../partials/aside', { currentPage: 'home' }) %>
+        <%- include('../../partials/aside', { currentPage: 'criarVagasContratante' }) %>
         <div class="main-wrapper">
-
             <%- include('../../partials/topbar') %>
 
             <main class="page-body">
+                <h1>Criar Anúncio de Emprego</h1>
+
+                <article>
+                    <form action="/usuarios/criarVagasContratante" method="POST" id="formVaga">
+                        <section class="boxInfoGrupo formVaga" >
+                            <article>
+                                <div class="infoGrupo">
+                                    <label for="titulo">Titulo do Anúncio</label>
+                                    <input type="text" id="titulo" name="titulo" required>
+                                </div>
+                                <div class="infoGrupo">
+                                    <label for="cargo">Cargo</label>
+                                    <input type="text" id="cargo" name="cargo" required>
+                                </div>
+                                <div class="infoGrupo">
+                                    <label for="tipoLocalTrabalho">Tipo de Local de Trabalho</label>
+                                    <input type="text" id="tipoLocalTrabalho" name="tipoLocalTrabalho" required>
+                                </div>
+                            </article>
+
+                            <article>
+                                <div class="infoGrupo">
+                                    <label for="modalidade">Modalidade</label>
+                                    <select name="modalidade" id="modalidade" required>
+                                        <option value="presencial">Presencial</option>
+                                        <option value="remoto">Remoto</option>
+                                        <option value="hibrido">Híbrido</option>
+                                    </select>
+                                </div>
+                                <div class="infoGrupo">
+                                    <label for="localidade">Localidade</label>
+                                    <input type="text" id="localidade" name="localidade" required>
+                                </div>
+                                <div class="infoGrupo">
+                                    <label for="faixaSalarial">Faixa Salarial</label>
+                                    <input type="text" id="faixaSalarial" name="faixaSalarial" required>
+                                </div>
+                            </article>
+                        </section>
+
+                        <section class="infoGrupo">
+                            <label for="descricao">Descrição da Vaga</label>
+                            <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                        </section>
+
+                        <section id="competencias" >
+                            <label for="competencias">Competências</label>
+                            <button type="button" class="adicionar" onclick="adicionarCompetencia()">Adicionar Competência</button>
+                            
+                            <div class="campoCompetencia">
+                                <input class="campoSugestoes" type="text" placeholder="Digite sua Competências" required>
+                                <ul class="listaDeSugestoes"></ul>
+                            </div>
+
+                            <div class="contentEscolhidos">
+                                <ul class="listaDeCompetenciasEscolhidas"></ul>
+                            </div>
+                        </section>
+                    </form>
+                </article>
             </main>
         </div>
+        <script src="/js/criaVagasContratante.js"></script>
     </body>
 </html>

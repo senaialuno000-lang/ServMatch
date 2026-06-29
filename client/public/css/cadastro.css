@@ -49,11 +49,11 @@
     margin: 8px 0;
 }
 
-.infoGrupo label {
+.infoGrupo label, label[for="competencias"] {
    font-size: var(--font-pequena-tamanho);
 }
 
-.infoGrupo input {
+.infoGrupo input, select, textarea {
     width: 100%;
     padding: 10px;
     border-radius: 10px;
@@ -73,7 +73,7 @@
     width: 15px;
 }
 
-button {
+button[class="enviar"] {
     align-self: center;
     align-items: center;
     width: 85%;
@@ -90,4 +90,90 @@ button {
 .campoForm p {
     margin-top: 10px;
     text-align: center;
+}
+
+/* CRIA VAGA CONTRATANTE */
+.formVaga {
+    gap: 10px;
+    display: flex; 
+}
+
+.formVaga article {
+    width: 100%;
+}
+
+textarea[name="descricao"] {
+    height: 200px;
+}
+
+button[class="adicionar"] {
+        width: 40%;
+        height: 50px;
+        border: none;
+        padding: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        font-weight: bold;
+        border-radius: 10px;
+        color: var(--cor-fundo);
+        font-size: var(--font-grande-tamanho);
+        background-color: var(--cor-servmatch);
+}
+
+#competencias {
+    display: flex;
+    flex-direction: column;
+}
+
+.campoCompetencia {
+    display: none;
+    margin-top: 20px;
+}
+
+.campoCompetencia input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: solid 1px var(--cor-cinza);
+}
+
+.active {
+    display: block;
+}
+
+li[class="listaVaga"] {
+    z-index: 2;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    padding: 5px 15px;
+    border-bottom: solid 0.3px var(--cor-cinza);
+} li[class="listaVaga"]:hover {
+    color: white;
+    font-size: bold;
+    background-color: var(--cor-servmatch);
+}
+
+.itemEscolhido {
+    color: white;
+    cursor: pointer;
+    font-size: bold;
+    list-style: none;
+    user-select: none;
+    padding: 8px 15px;
+    width: fit-content;
+    border-radius: 50px;
+    background-color: var(--cor-servmatch);
+}
+
+.contentEscolhidos {
+    display: none;
+    margin-top: 20px;
+}
+
+.listaDeCompetenciasEscolhidas {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
 }

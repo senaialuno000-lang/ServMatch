@@ -18,9 +18,14 @@ CREATE TABLE Usuario (
  
  
 SELECT * FROM Usuario;
- 
-INSERT INTO Usuario(nome, email, senha, celular, perfil)
-VALUES('matheus', 'tasd@gmail.com', '$2a$10$AJNCPhwD./hfIGN7Z85Ra.L17gnd9iSHhb/h.bv46laDKL6N2Qhja', '999999999', 'Candidato');
+INSERT INTO Usuario VALUES(null,"usu","usu@gmail.com","$2a$10$zX55t4a/.51jAsJ8iUakKe.o3kdNflMc2lxNwLuFixTje5y4HUOJi","234234", 'Contratante');
+INSERT INTO Usuario VALUES(null,"usua","usua@gmail.com","$2a$10$zX55t4a/.51jAsJ8iUakKe.o3kdNflMc2lxNwLuFixTje5y4HUOJi","234234", 'Candidato');
+insert into Contratante values(1,null,null,null,null,null,null,null,null,1);
+
+insert into Vagas values(null, "vaga 5", "Presencial", "asdas", "Vitória", "sadasd", 500.0, "Trabalho em Vitória de programação", "aberta", 1);
+select tituloVaga, localidadeVaga, salario, descricaoVaga  from Vagas;
+
+
  
  
 -- Tabela: Contratante

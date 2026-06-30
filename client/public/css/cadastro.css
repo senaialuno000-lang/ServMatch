@@ -157,7 +157,6 @@ li[class="listaVaga"] {
 .itemEscolhido {
     color: white;
     cursor: pointer;
-    font-size: bold;
     list-style: none;
     user-select: none;
     padding: 8px 15px;
@@ -176,4 +175,17 @@ li[class="listaVaga"] {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+}
+
+.vagaEnviar {
+    border: none;
+    padding: 10px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    margin-top: 30px;
+    font-weight: bold;
+    border-radius: 5%;
+    width: fit-content;
+    background-color: var(--btn-background);
 }

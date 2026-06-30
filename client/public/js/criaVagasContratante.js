@@ -64,3 +64,9 @@ function adicionarCompetencia() {
     let div = document.querySelector(".campoCompetencia");
     div.classList.toggle("active");
 }
+
+document.querySelector("#formVaga").addEventListener("submit", () => {
+    let itens = document.querySelectorAll(".itemEscolhido");
+    let competencias = Array.from(itens).map(li => li.textContent);
+    document.querySelector("#competenciasHidden").value = JSON.stringify(competencias);
+});

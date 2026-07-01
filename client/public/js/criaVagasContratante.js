@@ -1,14 +1,24 @@
 let input = document.querySelector(".campoSugestoes");
 let ul = document.querySelector(".listaDeSugestoes");
 let contentEscolhidos = document.querySelector(".contentEscolhidos");
+let campoListaLocalidade = document.querySelector(".campoListaLocalidade");
 let listaDeCompetenciasEscolhidas = document.querySelector(".listaDeCompetenciasEscolhidas");
 let listaCompetencia = [];
+let listaLocalidade = [];
 
 // Pega todos os dados do arquivo json e joga dentro do array "listaCompetencia";
 fetch('/data/lista_cargos.json').then((response) => {
     response.json().then((lista_cargos) => {
         lista_cargos.competencias.map((competencia) => {
             listaCompetencia.push(competencia);
+        });
+    });
+});
+
+fetch('/data/cidades.json').then((response) => {
+    response.json().then((cidades) => {
+        cidades.cidades.map((cidade) => {
+            listaLocalidade.push(cidade);
         });
     });
 });
